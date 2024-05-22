@@ -1,0 +1,95 @@
+### Pseudocode for JavaScript Code
+
+**Initialization on DOM Content Loaded**
+
+- ON DOMContentLoaded
+  - Define `clothingData` array with product details
+  - Get references to DOM elements:
+    - `container` = element with id "clothing-cards"
+    - `cartContainer` = tbody element inside class "cart-container"
+    - `emptyCartMessage` = element with class "empty-cart-message"
+  - Initialize variables:
+    - `totalPrice` = 0
+    - `totalItems` = 0
+
+**Function: toggleCartVisibility**
+
+- IF `totalItems` == 0 THEN
+  - Hide cart element with id "cart"
+  - Display `emptyCartMessage`
+- ELSE
+  - Show cart element with id "cart"
+  - Hide `emptyCartMessage`
+
+**Render Clothing Cards**
+
+- FOR EACH item in `clothingData`
+  - Create `card` element with class "product-card"
+  - Set inner HTML of `card` with product details
+  - Append `card` to `container`
+
+**Function: addToCart(id, name, price)**
+
+- IF `cartContainer.children.length` < 4 THEN
+  - Check if item already exists in cart:
+    - `existingItem` = element with class "cart-item" and data-id `id`
+  - IF `existingItem` exists THEN
+    - Increment quantity of `existingItem`
+  - ELSE
+    - Create `cartItem` element with class "cart-item"
+    - Set `cartItem.dataset.id` = `id`
+    - Set inner HTML of `cartItem` with item details
+    - Append `cartItem` to `cartContainer`
+- ELSE
+  - Display message element with id "lastpara"
+- Update `totalPrice` += `price`
+- Increment `totalItems`
+- Call `updateTotal()`
+- Call `updateAverage()`
+- Call `toggleCartVisibility()`
+
+**Function: updateTotal**
+
+- Update text content of element with class "total" and strong tag to "Total: $`totalPrice.toFixed(2)`"
+
+**Function: updateAverage**
+
+- Calculate `averagePrice` = IF `totalItems` THEN `totalPrice / totalItems` ELSE 0
+- Update text content of element with class "average" and strong tag to "Average Price: $`averagePrice.toFixed(2)`"
+
+**Event Listener: Add to Cart Button**
+
+- ON click event on `container`
+  - IF event target has class "add-to-cart-btn" THEN
+    - Get `id` from event target dataset
+    - Get `name` from event target dataset
+    - Get `price` from event target dataset
+    - Call `addToCart(id, name, price)`
+
+**Function: clearCart**
+
+- Clear `cartContainer` inner HTML
+- Reset `totalPrice` to 0
+- Reset `totalItems` to 0
+- Call `updateTotal()`
+- Call `updateAverage()`
+- Call `toggleCartVisibility()`
+
+**Event Listener: Clear Cart Button**
+
+- ON click event on element with class "clear-btn"
+  - Call `clearCart()`
+
+**Function: sortCartByPrice(order)**
+
+- Convert `cartContainer` children to array `items`
+- Sort `items` by price based on `order`
+- Clear `cartContainer` inner HTML
+- FOR EACH `item` in `items`
+  - Append `item` to `cartContainer`
+
+**Initialize Cart Visibility**
+
+- Call `toggleCartVisibility()`
+
+**END**
