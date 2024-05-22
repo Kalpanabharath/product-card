@@ -77,7 +77,7 @@ container.appendChild(card);
     });
   function addToCart(id, name, price) {
         
-const existingItem = document.querySelector(`.cart-item[data-id="${id}"]`);
+
        
             const cartItem = document.createElement('tr');
             cartItem.classList.add('cart-item');
