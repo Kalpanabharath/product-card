@@ -5,14 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
         "id": "C001",
         "name": "boho-Printed",
         "price": 19.99,
-        "stock": 150,
-     "image": "./image/boho-Printed.jpg"
+        "image": "./image/boho-Printed.jpg"
       },
       {
         "id": "C002",
         "name": "Boho",
         "price": 12.9,
-        "stock": 100,
         "category": "Clothing",
         "image": "./image/Boho.jpg"
       },
@@ -20,29 +18,25 @@ document.addEventListener('DOMContentLoaded', function() {
         "id": "C003",
         "name": "off-shoulder",
        "price": 30.99,
-        "stock": 120,
-        "image": "./image/off-shoulder.jpg"
+       "image": "./image/off-shoulder.jpg"
       },
       {
         "id": "C004",
         "name": "polka",
        "price": 21.99,
-        "stock": 80,
-         "image": "./image/polka.jpg"
+      "image": "./image/polka.jpg"
       },
       {
         "id": "C005",
         "name": "ponders",
         "price": 15.99,
-        "stock": 90,
-       "image": "./image/ponders.jpg"
+     "image": "./image/ponders.jpg"
       },
       {
         "id": "C005",
         "name": "bohemian",
          "price": 79.99,
-        "stock": 90,
-        "image": "./image/bohemian.jpg"
+         "image": "./image/bohemian.jpg"
       },
 
   ];
@@ -82,7 +76,7 @@ clothingData.forEach(clothing => {
 container.appendChild(card);
     });
   function addToCart(id, name, price) {
-        if (cartContainer.children.length < 4) {
+        
 const existingItem = document.querySelector(`.cart-item[data-id="${id}"]`);
         if (existingItem) {
             const quantityInput = existingItem.querySelector('.quantity-input');
@@ -102,11 +96,7 @@ const existingItem = document.querySelector(`.cart-item[data-id="${id}"]`);
             cartContainer.appendChild(cartItem);
             
               }
-        }
-        else{
-            
-            document.getElementById("lastpara").style.display="block";
-        }
+      
         totalPrice += parseFloat(price);
         totalItems++;
         updateTotal();
