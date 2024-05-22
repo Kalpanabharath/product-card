@@ -78,11 +78,7 @@ container.appendChild(card);
   function addToCart(id, name, price) {
         
 const existingItem = document.querySelector(`.cart-item[data-id="${id}"]`);
-        if (existingItem) {
-            const quantityInput = existingItem.querySelector('.quantity-input');
-            const quantity = parseInt(quantityInput.value);
-            quantityInput.value = quantity + 1;
-        } else {
+       
             const cartItem = document.createElement('tr');
             cartItem.classList.add('cart-item');
             cartItem.dataset.id = id;
@@ -95,7 +91,7 @@ const existingItem = document.querySelector(`.cart-item[data-id="${id}"]`);
         `;
             cartContainer.appendChild(cartItem);
             
-              }
+              
       
         totalPrice += parseFloat(price);
         totalItems++;
@@ -130,17 +126,6 @@ const existingItem = document.querySelector(`.cart-item[data-id="${id}"]`);
   
     document.querySelector('.clear-btn').addEventListener('click', clearCart);
   
-    function sortCartByPrice(order) {
-      const items = Array.from(cartContainer.querySelectorAll('.cart-item'));
-      items.sort((a, b) => {
-          const priceA = parseFloat(a.querySelector('td:nth-child(2)').textContent.slice(1));
-          const priceB = parseFloat(b.querySelector('td:nth-child(2)').textContent.slice(1));
-          return order === 'asc' ? priceA - priceB : priceB - priceA;
-      });
-      cartContainer.innerHTML = '';
-      items.forEach(item => {
-          cartContainer.appendChild(item);
-      });
-    }
+ 
 toggleCartVisibility();
   });
