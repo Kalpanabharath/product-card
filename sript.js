@@ -62,7 +62,7 @@ clothingData.forEach(clothing => {
                 <img src="${clothing.image}" alt="${clothing.name}">
             </div>
             <div class="product-details">
-                <h4><a href="">${clothing.name}</a></h4>
+                <h4>${clothing.name}</h4>
                 
                 <div class="product-bottom-details">
                     <div class="product-price"><small>$${clothing.price.toFixed(2)}</small></div>
