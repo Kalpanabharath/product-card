@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "id": "C002",
         "name": "Boho",
         "price": 12.9,
-        "category": "Clothing",
-        "image": "./image/Boho.jpg"
+       "image": "./image/Boho.jpg"
       },
       {
         "id": "C003",
@@ -76,10 +75,7 @@ clothingData.forEach(clothing => {
 container.appendChild(card);
     });
   function addToCart(id, name, price) {
-        
-
-       
-            const cartItem = document.createElement('tr');
+        const cartItem = document.createElement('tr');
             cartItem.classList.add('cart-item');
             cartItem.dataset.id = id;
             cartItem.innerHTML = `
